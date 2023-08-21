@@ -1,11 +1,16 @@
-import * as React from "react";
+import React from "react";
 import "./styles.css";
 //import mitt from 'mitt'
 import Counter from "./Counter";
-import useCounterStore from "MICRO/store";
+import useCounterStore from "host/useStore";
 
-function App({ onChange }) {
-  const { count, increment, decrement } = useCounterStore();
+const App = ({ onChange }) => {
+  // const { count: count1, increment: inc, decrement: dec } = useCounterStore();
+  console.log(">>>a", useCounterStore);
+  // const ab = useCounterStore();
+  const count = 0;
+  const increment = () => {};
+  const decrement = () => {};
   return (
     <div className="MicroApp">
       <label>Counter Value: {count}</label>
@@ -14,6 +19,6 @@ function App({ onChange }) {
       <input onChange={onChange} type="text" placeholder="Enter your name" />
     </div>
   );
-}
+};
 
 export default App;

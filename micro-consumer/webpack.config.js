@@ -31,7 +31,7 @@ module.exports = {
         ],
       },
       {
-        test:  /\.js$|jsx/,
+        test: /\.js$|jsx/,
         use: ["babel-loader"],
         exclude: /node_modules/,
       },
@@ -42,16 +42,15 @@ module.exports = {
       template: path.resolve(__dirname, "public", "index.html"),
     }),
     new ModuleFederationPlugin({
-      name: "MICRO",
+      name: "host",
       filename: "remoteEntry.js",
       remotes: {
         FIRST_APP: "FIRST_APP@http://localhost:8080/remoteEntry.js",
-        MICRO: "MICRO@http://localhost:8081/remoteEntry.js"
+        host: "host@http://localhost:8081/remoteEntry.js",
       },
       exposes: {
-        "./store":    "./src/store/index.js",
-    },
+        "./useStore": "./src/store",
+      },
     }),
-
   ],
 };
